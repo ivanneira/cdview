@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vista de pagos</title>
+    <link rel="stylesheet" href="css/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="css/ui.jqgrid-bootstrap-ui.css">
+    <link rel="stylesheet" href="plugins/ui.multiselect.css">
+    <link rel="stylesheet" href="plugins/searchFilter.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <script src="js/i18n/grid.locale-es.js"></script>
+    <script src="plugins/grid.addons.js"></script>
+    <script src="plugins/grid.setcolumns.js"></script>
+    <script src="plugins/jquery.searchFilter.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+
+
+</head>
+<body>
+
+<table id="jqGrid"></table>
+<div id="pager"></div>
+
+<script>
+
+    $(function () {
+        $("#jqGrid").jqGrid({
+            url: "dbAccess.php",
+            datatype: "json",
+            mtype: "GET",
+            colNames: ["Fecha", "Referencia", "Bruto"],
+            colModel: [
+                { name: "Fecha" },
+                { name: "Referencia" },
+                { name: "Bruto" }
+
+            ],
+            width: 800,
+            height: 400,
+            //pager: "#pager",
+            rowNum: 10000,
+            //rowList: [10, 20, 30],
+            viewrecords: true,
+            gridview: true,
+            autoencode: true,
+            caption: "Pagos 2016"
+        });
+
+        $("#jqGrid").jqGrid('filterToolbar',options);
+    });
+
+</script>
+
+</body>
+</html>
